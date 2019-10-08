@@ -1,0 +1,70 @@
+#include <stdio.h>
+
+int fib( int n );
+void PrintFN( int m, int n );
+	
+int main()
+{
+    int m, n, t;
+	printf("输入寻找范围(最大值和最小值),输入查找第几位斐波那契数：\n");
+    scanf("%d %d %d", &m, &n, &t);
+    printf("fib(%d) = %d\n", t, fib(t));
+    if(m<=n) 
+    PrintFN(m, n);
+    else
+    printf("输入有误，先输入最小值再输入最大值"); 
+
+    return 0;
+}
+
+int fib( int n )
+{
+	int a[10000]={1,1};
+	int i;
+	for(i=2;i<10000;i++)
+	{
+		a[i]=a[i-1]+a[i-2];
+	}
+	return a[n-1];
+}
+
+void PrintFN( int m, int n ) //寻找范围内斐波那契 
+{
+	int a[10000]={1,1};
+	int i,flag=0,j;
+	
+	for(i=2;i<100;i++)
+	{
+		a[i]=a[i-1]+a[i-2];
+	}	
+
+if(m!=n)
+{
+	
+	for(i=0;i<100;i++)
+	{
+		if(a[i]>=m&&a[i-1]<m)
+		{
+			for(j=i;a[j]<=n;j++)
+			{
+				printf("%d",a[j]);
+				if(a[j+1]>n)
+				{
+				break;
+				}
+				else
+				{
+					printf(" ");
+				}
+				flag=1;
+			}
+		}
+	}
+}
+	
+	if(flag=0||m==n)
+	{
+		printf("No Fibonacci number");
+	}
+//判断最小值在两个斐波那契数之间 输出直到某个斐波那契数小于最大值
+}
