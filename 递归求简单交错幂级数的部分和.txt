@@ -1,0 +1,23 @@
+#include <stdio.h>
+double fn( double x, int n );
+//递归求简单交错幂级数的部分和  
+//f(x,n)=x-x^2+x^3-x^4+......(-1)^n-1*x^n 
+int main()
+{
+    double x;
+    int n;
+    printf("输入底数及指数(空格分隔):");
+    scanf("%lf %d", &x, &n);
+    printf("%.2f\n", fn(x,n));
+    return 0;
+}
+
+double fn( double x, int n )
+{
+	double sum=0.0;
+	if(n==0)
+		sum=x;
+	else
+		sum= x-x*fn(x,n-1);
+	return sum;	
+}
